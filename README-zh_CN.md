@@ -1,6 +1,6 @@
 <div align="center">
-  <a href="https://ui-puzzles.github.io/rect/?path=/docs/welcome--page" target="_blank">
-    <img alt="ui-puzzle logo" width="200" src="https://static-images-1305792369.cos.ap-shanghai.myqcloud.com/puzzle-logo.svg"/>
+  <a href="#" target="_blank">
+    <img alt="ui-puzzle logo" width="200" src="https://github.com/fujia-dev/hooks/blob/main/public/logo.svg"/>
   </a>
 </div>
 
