@@ -5,12 +5,12 @@
 </div>
 
 <div align="center">
-  <h1>ui-puzzle/rect</h1>
+  <h1>@fujia/hooks</h1>
 </div>
 
 <div align="center">
 
-一套高质量的、开箱即用的 React UI 组件库。
+一套非常不错的React hooks库。
 
 </div>
 

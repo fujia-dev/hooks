@@ -1,16 +1,16 @@
 import { useState, useEffect, useRef } from 'react';
 import debounce from 'lodash/debounce';
 
-const getScrollPosition = () => ({
-  left: document.body.scrollLeft,
-  top: document.body.scrollTop,
+const getScrollPosition = (container = document.body) => ({
+  left: container.scrollLeft,
+  top: container.scrollTop,
 });
 
-const useScroll = (interval = 500) => {
-  const [position, setPosition] = useState(getScrollPosition());
+const useScroll = (container = document.body, interval = 500) => {
+  const [position, setPosition] = useState(getScrollPosition(container));
 
   const cachedHandler = useRef<(() => void) | null>(debounce(() => {
-    setPosition(getScrollPosition());
+    setPosition(getScrollPosition(container));
   }, interval));
 
   useEffect(() => {

@@ -27,8 +27,8 @@ function getAdditionalModulePaths(options = {}) {
   }
 
   // Allow the user set the `baseUrl` to `appSrc`.
-  if (path.relative(paths.appSrc, baseUrlResolved) === '') {
-    return [paths.appSrc];
+  if (path.relative(paths.appExamples, baseUrlResolved) === '') {
+    return [paths.appExamples];
   }
 
   // If the path is equal to the root directory we ignore it here.
@@ -65,7 +65,9 @@ function getWebpackAliases(options = {}) {
 
   if (path.relative(paths.appPath, baseUrlResolved) === '') {
     return {
-      src: paths.appSrc,
+      src: paths.appExamples,
+      hooks: `${paths.appPath}/src/hooks`,
+      '@': `${paths.appExamples}/src`,
     };
   }
 }

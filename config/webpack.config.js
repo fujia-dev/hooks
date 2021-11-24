@@ -16,7 +16,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
-const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
+// const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const paths = require('./paths');
@@ -144,7 +144,7 @@ module.exports = function (webpackEnv) {
           loader: require.resolve('resolve-url-loader'),
           options: {
             sourceMap: isEnvProduction ? shouldUseSourceMap : isEnvDevelopment,
-            root: paths.appSrc,
+            root: paths.appExamples,
           },
         },
         {
@@ -218,7 +218,7 @@ module.exports = function (webpackEnv) {
       devtoolModuleFilenameTemplate: isEnvProduction
         ? info =>
             path
-              .relative(paths.appSrc, info.absoluteResourcePath)
+              .relative(paths.appExamples, info.absoluteResourcePath)
               .replace(/\\/g, '/')
         : isEnvDevelopment &&
           (info => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')),
@@ -344,10 +344,10 @@ module.exports = function (webpackEnv) {
         // To fix this, we prevent you from importing files out of src/ -- if you'd like to,
         // please link the files into your node_modules/ and let module-resolution kick in.
         // Make sure your source files are compiled, as they will not be processed in any way.
-        new ModuleScopePlugin(paths.appSrc, [
-          paths.appPackageJson,
-          reactRefreshOverlayEntry,
-        ]),
+        // new ModuleScopePlugin(paths.appExamples, [
+        //   paths.appPackageJson,
+        //   reactRefreshOverlayEntry,
+        // ]),
       ],
     },
     resolveLoader: {
@@ -393,7 +393,7 @@ module.exports = function (webpackEnv) {
             // The preset includes JSX, Flow, TypeScript, and some ESnext features.
             {
               test: /\.(js|mjs|jsx|ts|tsx)$/,
-              include: paths.appSrc,
+              include: [paths.appExamples, paths.appSrc],
               loader: require.resolve('babel-loader'),
               options: {
                 customize: require.resolve(
@@ -719,7 +719,7 @@ module.exports = function (webpackEnv) {
           formatter: require.resolve('react-dev-utils/eslintFormatter'),
           eslintPath: require.resolve('eslint'),
           failOnError: !(isEnvDevelopment && emitErrorsAsWarnings),
-          context: paths.appSrc,
+          context: paths.appExamples,
           cache: true,
           cacheLocation: path.resolve(
             paths.appNodeModules,
