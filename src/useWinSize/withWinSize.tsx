@@ -1,5 +1,5 @@
 import React from 'react';
-import useWinSize from '../hooks/useWinSize';
+import useWinSize from '.';
 
 const withWinSize = (Comp: React.ComponentType) => {
   return (props: any) => {
