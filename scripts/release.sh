@@ -7,7 +7,7 @@ read -p "Releasing $VERSION - are you sure?(y/n)" -n 1 -r
 echo # move to a new line
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-  sed -i "" 's/\("version":"\).*/\1'"$VERSION"'",/g' package.json
+  sed -i "" 's/\("version": "\).*/\1'"$VERSION"'",/g' package.json
   echo "Relasing $VERSION ..."
 
   # upgrade version
