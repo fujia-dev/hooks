@@ -1,4 +1,4 @@
-import { MyRouter, Route } from '../routing/customize-router';
+import { MyRouter, Route } from './customize-router';
 
 const Page1 = () => <h1>Page One</h1>;
 const Page2 = () => <h1>Page Two</h1>;
@@ -24,7 +24,7 @@ const CustomizeRouterExample = () => {
         </MyRouter>
       </div>
     </div>
-  )
+  );
 };
 
 export default CustomizeRouterExample;

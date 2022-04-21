@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -17,16 +13,14 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./examples/src/*"],
-      "hooks/*": ["./src/hooks/*"],
+      "hooks/*": ["./src/hooks/*"]
     },
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "downlevelIteration": true,
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": [
-    "src",
-    "examples"
-  ]
+  "include": ["src", "examples"]
 }
