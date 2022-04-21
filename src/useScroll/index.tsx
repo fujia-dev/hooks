@@ -1,5 +1,12 @@
 import { useState, useEffect, useRef, RefObject } from 'react';
-import _ from '@fujia/hammer';
+import {
+  isDev,
+  errorLog,
+  debounce,
+  addListener,
+  isUndef,
+  removeListener,
+} from '@fujia/hammer';
 
 export type UseScrollState = {
   top: number;
@@ -7,29 +14,31 @@ export type UseScrollState = {
 };
 
 const useScroll = (ref: RefObject<HTMLElement>, interval = 300) => {
-  if (_.isDev && _.isUndef(ref?.current)) {
-    _.errorLog('`useScroll` expects a single ref argument.')
+  if (isDev && isUndef(ref?.current)) {
+    errorLog('`useScroll` expects a single ref argument.');
   }
 
   const [position, setPosition] = useState<UseScrollState>({
     top: 0,
-    left: 0
+    left: 0,
   });
 
-  const cachedHandler = useRef<VoidFunction | null>(_.debounce(() => {
-    if (ref.current) {
-      setPosition({
-        top: ref.current.scrollTop,
-        left: ref.current.scrollLeft
-      });
-    }
-  }, interval));
+  const cachedHandler = useRef<VoidFunction | null>(
+    debounce(() => {
+      if (ref.current) {
+        setPosition({
+          top: ref.current.scrollTop,
+          left: ref.current.scrollLeft,
+        });
+      }
+    }, interval)
+  );
 
   useEffect(() => {
     const refNode = ref.current;
-  
+
     if (refNode && cachedHandler.current) {
-      _.addListener(refNode, 'scroll', cachedHandler.current, {
+      addListener(refNode, 'scroll', cachedHandler.current, {
         capture: false,
         passive: true,
       });
@@ -37,14 +46,13 @@ const useScroll = (ref: RefObject<HTMLElement>, interval = 300) => {
 
     return () => {
       if (refNode && cachedHandler.current) {
-        _.removeListener(refNode, 'scroll', cachedHandler.current);
+        removeListener(refNode, 'scroll', cachedHandler.current);
         cachedHandler.current = null;
       }
-    }
+    };
   }, [ref]);
 
   return position;
 };
 
 export default useScroll;
-

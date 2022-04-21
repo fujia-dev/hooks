@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import _ from '@fujia/hammer';
+import { isFunction, addListener, removeListener } from '@fujia/hammer';
 
 const usePageLeave = (onPageLeave: CallableFunction, args = []) => {
   useEffect(() => {
-    if (!_.isFunction(onPageLeave)) return;
+    if (!isFunction(onPageLeave)) return;
 
     const handler = (event: MouseEventInit) => {
       const from = event.relatedTarget;
@@ -13,12 +13,12 @@ const usePageLeave = (onPageLeave: CallableFunction, args = []) => {
       }
     };
 
-    _.addListener(document, 'mouseout', handler);
+    addListener(document, 'mouseout', handler);
 
     return () => {
-      _.removeListener(document, 'mouseout', handler);
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+      removeListener(document, 'mouseout', handler);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, args);
 };
 
