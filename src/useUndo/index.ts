@@ -39,7 +39,7 @@ export const useUndo = <T>(
         future: newFuture,
       };
     });
-  }, []);
+  }, [undoSize]);
 
   const redo = useCallback(() => {
     setState((prevState) => {
