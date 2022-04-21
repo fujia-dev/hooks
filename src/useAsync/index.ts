@@ -1,21 +1,8 @@
 import { useCallback, useState } from 'react';
+
 import { useMountedRef } from '../useMountedRef';
-
-interface State<D> {
-  error: Error | null;
-  data: D | null;
-  stat: 'idle' | 'loading' | 'error' | 'success';
-}
-
-const initialDefaultState: State<null> = {
-  stat: 'idle',
-  data: null,
-  error: null,
-};
-
-const defaultConfig = {
-  throwOnError: false,
-};
+import type { State } from './interface';
+import { initialDefaultState, defaultConfig } from './constants';
 
 export const useAsync = <D>(
   initialState?: State<D>,

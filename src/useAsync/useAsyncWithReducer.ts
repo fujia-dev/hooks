@@ -2,16 +2,7 @@ import { useCallback, useReducer } from 'react';
 
 import { useMountedRef } from '../useMountedRef';
 import type { State } from './interface';
-
-const initialDefaultState: State<any> = {
-  stat: 'idle',
-  data: null,
-  error: null,
-};
-
-const defaultConfig = {
-  throwOnError: false,
-};
+import { initialDefaultState, defaultConfig } from './constants';
 
 const useSafeDispatch = <T>(dispatch: (...args: T[]) => void) => {
   const mountedRef = useMountedRef();
