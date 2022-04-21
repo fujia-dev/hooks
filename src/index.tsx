@@ -1,12 +1,12 @@
 /*** hooks ***/
 
-export { default as useAsync } from './useAsync';
+export { default as useAsync } from './useAsync/useAsyncSimple';
 
 export { default as useClickOutside } from './useClickOutside';
 
 export { default as useCounter } from './useCounter';
 
-export { default as useDebounce } from './useDebounce';
+export { useDebounce } from './useDebounce';
 
 export { default as useKeyPress } from './useKeyPress';
 

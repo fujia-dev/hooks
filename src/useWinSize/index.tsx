@@ -1,27 +1,35 @@
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import _ from '@fujia/hammer';
 
-const useWinSize = () => {
-  const [winSize, setWinSize] = useState({
-    width: 0,
-    height: 0
+const useWinSize = ({
+  initialWidth = Infinity,
+  initialHeight = Infinity,
+  interval = 300
+}) => {
+  const [winSize, setWinSize] = useState<{
+    width: number;
+    height: number;
+  }>({
+    width: _.isBrowser ? window.innerWidth : initialWidth,
+    height: _.isBrowser ? window.innerHeight : initialHeight
   });
+
+  const cachedHandler = useRef<VoidFunction | null>(_.debounce(() => {
+    setWinSize({
+      width: window?.innerWidth || initialWidth,
+      height: window?.innerHeight || initialHeight,
+    });
+  }, interval));
   
   useEffect(() => {
-    const handleWinSize = () => {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-
-      setWinSize({
-        width,
-        height,
-      });
-    };
-
-    window.addEventListener('resize', handleWinSize);
-  
-    return () => {
-      window.removeEventListener('resize', handleWinSize);
+    if (_.isBrowser) {
+      _.addListener(window, 'resize', cachedHandler.current);
+    
+      return () => {
+        _.removeListener(window, 'resize', cachedHandler.current);
+        cachedHandler.current = null;
+      }
     }
   }, []);
 

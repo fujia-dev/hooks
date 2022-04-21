@@ -1,15 +1,15 @@
 /*
  * @Author: fujia
  * @Date: 2021-11-23 15:24:39
- * @LastEditTime: 2021-11-23 16:13:42
+ * @LastEditTime: 2022-04-21 13:57:00
  * @LastEditors: fujia(as default)
  * @Description: Abstract async request with hooks.
- * @FilePath: /hooks/src/hooks/useAsync.tsx
+ * @FilePath: /hooks/src/useAsync/useAsyncSimple.ts
  */
 
 import { useState, useCallback } from 'react';
 
-const useAsync = (asyncFn: () => Promise<any>) => {
+const useAsyncSimple = (asyncFn: () => Promise<any>) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -20,14 +20,14 @@ const useAsync = (asyncFn: () => Promise<any>) => {
     setError(null);
 
     return asyncFn()
-      .then(res => {
+      .then((res) => {
         setData(res);
         setLoading(false);
       })
-      .catch(err => {
+      .catch((err) => {
         setLoading(false);
         setError(err);
-      })
+      });
   }, [asyncFn]);
 
   return {
@@ -36,7 +36,6 @@ const useAsync = (asyncFn: () => Promise<any>) => {
     error,
     execute,
   };
-}
+};
 
-export default useAsync;
-
+export default useAsyncSimple;
