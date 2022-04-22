@@ -23,7 +23,7 @@
     "test": "node scripts/test.js",
     "gh:pages": "gh-pages -d /docs -r https://github.com/fujia-dev/hooks -b main",
     "prepare": "husky install",
-    "prerelease": "npm run build && npm run gh:gages",
+    "prerelease": "npm run build && npm run gh:pages",
     "release": "stage release"
   },
   "homepage": "https://github.com/fujia-dev/hooks",
