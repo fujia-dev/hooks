@@ -17,7 +17,7 @@
     "start": "node scripts/start.js",
     "build:docs": "node scripts/build.js",
     "build:ts": "tsc -p tsconfig.prod.json --module commonjs && rollup -c rollup.config.ts",
-    "build": "npm run clean && npm run build:ts && build:docs",
+    "build": "npm run clean && npm run build:ts && npm run build:docs",
     "lint": "eslint --ext ts,tsx src",
     "clean": "rimraf ./lib ./docs",
     "test": "node scripts/test.js",
