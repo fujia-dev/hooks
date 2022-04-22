@@ -10,7 +10,8 @@
 
 # production
 /build
-/dist
+/lib
+/docs
 
 package-lock.json
 yarn.lock
