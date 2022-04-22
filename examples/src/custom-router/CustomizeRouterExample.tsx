@@ -1,3 +1,4 @@
+import React from 'react';
 import { MyRouter, Route } from './customize-router';
 
 const Page1 = () => <h1>Page One</h1>;

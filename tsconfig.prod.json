@@ -4,10 +4,10 @@
     "module": "esnext",
     "target": "es5",
     "declaration": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src"],
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["src/**/*/*.test.tsx", "examples"]
 }

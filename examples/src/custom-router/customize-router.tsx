@@ -1,10 +1,10 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC, ReactElement } from 'react';
 import _ from 'lodash';
 import { useHash } from 'react-use';
 
 interface RouteProps {
   path: string;
-  component: ReactNode;
+  component: ReactElement;
 }
 
 export const MyRouter = ({ children }: { children: any[] }) => {
