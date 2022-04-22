@@ -2,10 +2,14 @@ import { RefObject, useEffect } from 'react';
 
 type HandlerType = (e: MouseEvent) => void;
 
-const useClickOutside = (ref: RefObject<HTMLElement>, handler: HandlerType) => {
+export const useClickOutside = (
+  ref: RefObject<HTMLElement>,
+  handler: HandlerType
+) => {
   useEffect(() => {
     const docListener = (event: MouseEvent) => {
-      if (!ref.current || ref.current.contains(event.target as HTMLLIElement)) return;
+      if (!ref.current || ref.current.contains(event.target as HTMLLIElement))
+        return;
 
       handler(event);
     };
@@ -13,9 +17,7 @@ const useClickOutside = (ref: RefObject<HTMLElement>, handler: HandlerType) => {
     document.addEventListener('click', docListener);
 
     return () => {
-      document.removeEventListener('click', docListener)
-    }
+      document.removeEventListener('click', docListener);
+    };
   }, [ref, handler]);
-}
-
-export default useClickOutside;
+};

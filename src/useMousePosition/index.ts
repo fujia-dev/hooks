@@ -6,13 +6,15 @@ interface UseMousePosition {
   interval: number;
 }
 
-const useMousePosition = (options: UseMousePosition = {
-  eventType: "mousemove",
-  interval: 300
-}) => {
+export const useMousePosition = (
+  options: UseMousePosition = {
+    eventType: 'mousemove',
+    interval: 300,
+  }
+) => {
   const [position, setPosition] = useState({
     x: 0,
-    y: 0
+    y: 0,
   });
   const { eventType, interval } = options;
 
@@ -21,20 +23,20 @@ const useMousePosition = (options: UseMousePosition = {
 
     setPosition({
       x: pageX,
-      y: pageY
+      y: pageY,
     });
   };
-  const debounceUpdatePosition = useRef(debounce(updatePosition, interval)).current
+  const debounceUpdatePosition = useRef(
+    debounce(updatePosition, interval)
+  ).current;
 
   useEffect(() => {
     document.addEventListener(eventType, debounceUpdatePosition);
 
     return () => {
       document.removeEventListener(eventType, debounceUpdatePosition);
-    }
-  }, [])
+    };
+  }, [debounceUpdatePosition, eventType]);
 
-  return position
-}
-
-export default useMousePosition;
+  return position;
+};

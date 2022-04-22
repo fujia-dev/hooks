@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "dist",
+    "outDir": "lib",
     "module": "esnext",
     "target": "es5",
     "declaration": true,
@@ -8,10 +8,6 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true
   },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "src/**/*/*.test.tsx"
-  ]
+  "include": ["src"],
+  "exclude": ["src/**/*/*.test.tsx"]
 }

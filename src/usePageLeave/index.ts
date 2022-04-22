@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { isFunction, addListener, removeListener } from '@fujia/hammer';
 
-const usePageLeave = (onPageLeave: CallableFunction, args = []) => {
+export const usePageLeave = (onPageLeave: CallableFunction, args = []) => {
   useEffect(() => {
     if (!isFunction(onPageLeave)) return;
 
@@ -21,5 +21,3 @@ const usePageLeave = (onPageLeave: CallableFunction, args = []) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, args);
 };
-
-export default usePageLeave;

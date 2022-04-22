@@ -9,6 +9,7 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
+    "outDir": "lib",
     "module": "esnext",
     "baseUrl": ".",
     "paths": {

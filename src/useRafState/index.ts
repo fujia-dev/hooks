@@ -4,13 +4,15 @@ import {
   useCallback,
   useRef,
   SetStateAction,
-  Dispatch
+  Dispatch,
 } from 'react';
 
-const useRafState = <S>(initialState: S | (() => S)): [S, Dispatch<SetStateAction<S>>] => {
+export const useRafState = <S>(
+  initialState: S | (() => S)
+): [S, Dispatch<SetStateAction<S>>] => {
   /**
-  * NOTE: Raf is shorthand of requestAnimationFrame
-  */
+   * NOTE: Raf is shorthand of requestAnimationFrame
+   */
   const frame = useRef(0);
   const [state, setState] = useState(initialState);
 
@@ -26,10 +28,8 @@ const useRafState = <S>(initialState: S | (() => S)): [S, Dispatch<SetStateActio
   useEffect(() => {
     return () => {
       cancelAnimationFrame(frame.current);
-    }
+    };
   }, []);
 
   return [state, setRafState];
 };
-
-export default useRafState;

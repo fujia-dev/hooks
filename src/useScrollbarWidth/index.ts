@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { isUndef, scrollbarWidth } from '@fujia/hammer';
 
-const useScrollbarWidth = (): number | undefined => {
+export const useScrollbarWidth = (): number | undefined => {
   const [scrollW, setScrollW] = useState(scrollbarWidth());
 
   useEffect(() => {
@@ -12,10 +12,8 @@ const useScrollbarWidth = (): number | undefined => {
     });
 
     return () => cancelAnimationFrame(raf);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return scrollW;
 };
-
-export default useScrollbarWidth;

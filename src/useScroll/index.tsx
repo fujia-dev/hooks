@@ -13,7 +13,7 @@ export type UseScrollState = {
   left: number;
 };
 
-const useScroll = (ref: RefObject<HTMLElement>, interval = 300) => {
+export const useScroll = (ref: RefObject<HTMLElement>, interval = 300) => {
   if (isDev && isUndef(ref?.current)) {
     errorLog('`useScroll` expects a single ref argument.');
   }
@@ -54,5 +54,3 @@ const useScroll = (ref: RefObject<HTMLElement>, interval = 300) => {
 
   return position;
 };
-
-export default useScroll;

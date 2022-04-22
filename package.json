@@ -4,9 +4,9 @@
   "private": false,
   "title": "@fujia/hooks",
   "description": "An awesome library for React Hooks",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "lib/index.js",
+  "module": "lib/index.esm.js",
+  "types": "lib/index.d.ts",
   "license": "MIT",
   "keywords": [
     "react",
@@ -15,14 +15,16 @@
   ],
   "scripts": {
     "start": "node scripts/start.js",
-    "build:ts": "tsc -p tsconfig.prod.json",
-    "build": "npm run clean && npm run build:ts",
+    "build:docs": "node scripts/build.js",
+    "build:ts": "tsc -p tsconfig.prod.json --module commonjs && rollup -c rollup.config.ts",
+    "build": "npm run clean && npm run build:ts && build:docs",
     "lint": "eslint --ext ts,tsx src",
-    "clean": "rimraf ./dist ./docs",
+    "clean": "rimraf ./lib ./docs",
     "test": "node scripts/test.js",
+    "gh:pages": "gh-pages -d /docs -r https://github.com/fujia-dev/hooks -b main",
     "prepare": "husky install",
-    "prerelease": "npm run build",
-    "release": "sh scripts/release.sh"
+    "prerelease": "npm run build && npm run gh:gages",
+    "release": "stage release"
   },
   "homepage": "https://github.com/fujia-dev/hooks",
   "bugs": {
@@ -33,7 +35,7 @@
     "url": "https://github.com/fujia-dev/hooks"
   },
   "files": [
-    "dist"
+    "lib"
   ],
   "peerDependencies": {
     "react": ">=16.9.0",
@@ -146,6 +148,9 @@
     "redux-thunk": "^2.4.0",
     "resolve": "1.18.1",
     "resolve-url-loader": "^3.1.2",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-typescript2": "^0.31.2",
     "sass-loader": "^10.0.5",
     "semver": "7.3.2",
     "style-loader": "1.3.0",

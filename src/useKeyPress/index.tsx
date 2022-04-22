@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const useKeyPress = (elem = document.body) => {
+export const useKeyPress = (elem = document.body) => {
   const [key, setKey] = useState<string | null>(null);
 
   useEffect(() => {
@@ -12,11 +12,8 @@ const useKeyPress = (elem = document.body) => {
 
     return () => {
       elem.removeEventListener('keypress', handleKeyPress);
-    }
-  }, [elem])
+    };
+  }, [elem]);
 
   return key;
-}
-
-export default useKeyPress;
-
+};

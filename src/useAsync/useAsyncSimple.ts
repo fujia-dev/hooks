@@ -1,7 +1,7 @@
 /*
  * @Author: fujia
  * @Date: 2021-11-23 15:24:39
- * @LastEditTime: 2022-04-21 13:57:00
+ * @LastEditTime: 2022-04-22 10:18:58
  * @LastEditors: fujia(as default)
  * @Description: Abstract async request with hooks.
  * @FilePath: /hooks/src/useAsync/useAsyncSimple.ts
@@ -9,7 +9,7 @@
 
 import { useState, useCallback } from 'react';
 
-const useAsyncSimple = (asyncFn: () => Promise<any>) => {
+export const useAsyncSimple = (asyncFn: () => Promise<any>) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -37,5 +37,3 @@ const useAsyncSimple = (asyncFn: () => Promise<any>) => {
     execute,
   };
 };
-
-export default useAsyncSimple;
