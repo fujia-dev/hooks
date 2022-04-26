@@ -28,7 +28,7 @@ const rollupConfig = [
       },
     ],
     // Indicate here external modules you don't wanna include in your bundle (i.e.: 'lodash')
-    external: ['react', 'react-dom'],
+    external: ['react', 'react-dom', 'axios'],
     watch: {
       include: 'src/**',
     },
