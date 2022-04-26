@@ -1,6 +1,6 @@
 {
   "name": "@fujia/hooks",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "private": false,
   "title": "@fujia/hooks",
   "description": "An awesome library for React Hooks",
