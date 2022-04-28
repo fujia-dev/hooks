@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import debounce from 'lodash/debounce';
+import { debounce } from '@fujia/hammer';
 
 interface UseMousePosition {
   eventType: 'click' | 'mousemove';
