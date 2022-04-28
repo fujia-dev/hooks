@@ -164,7 +164,7 @@
     "workbox-webpack-plugin": "5.1.4"
   },
   "dependencies": {
-    "@fujia/hammer": "^0.6.2",
+    "@fujia/hammer": "^0.7.0",
     "axios": "^0.27.0"
   }
 }
